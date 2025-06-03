@@ -16,9 +16,9 @@ struct TaskNode {
     void setPriority(int newPriority);
 };
 
-class taskNodeCompare {
+class taskCompare {
 public:
-    bool operator()(TaskNode a, TaskNode b);
+    bool operator()(TaskNode* a, TaskNode* b);
 };
 
 #endif

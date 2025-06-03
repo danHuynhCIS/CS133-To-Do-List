@@ -5,6 +5,12 @@ Task::Task(std::string task, int priority) {
     this->priority = priority;
 }
 
+Task::Task() {
+    task = "";
+    priority = 0; // default priority
+    isComplete = false; // default is not complete
+}
+
 Task::Task(std::string task) {
     this->task = task;
 }
@@ -23,4 +29,12 @@ int Task::getPriority() {
 
 void Task::setPriority(int newPriority) {
     priority = newPriority;
+
+}
+bool Task::getIsComplete() {
+    return isComplete;
+}
+
+void Task::setIsComplete(bool complete) {
+    isComplete = complete;
 }

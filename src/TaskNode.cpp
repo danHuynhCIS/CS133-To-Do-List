@@ -20,12 +20,11 @@ void TaskNode::setPriority(int newPriority) {
     task.setPriority(newPriority);
 }
 
-bool taskNodeCompare::operator()(TaskNode a, TaskNode b) {
+bool taskCompare::operator()(TaskNode* a, TaskNode* b) {
 
     // if tasks a and b priority are in ascending order, return true
-    if (a.getPriority() < b.getPriority()) {
-        return true; 
-    }
-
-    return false;
+    return a->task.getPriority() > b->task.getPriority();  // min heap?
 }
+
+
+

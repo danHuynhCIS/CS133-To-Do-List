@@ -2,6 +2,7 @@
 #include <fstream>
 #include <istream>
 #include "TaskManager.h"
+#include <string>
 
 void intro() {
     std::cout << "==============================" << std::endl;

@@ -10,7 +10,7 @@ class TaskManager {
 private:
     TaskNode* head;
     std::priority_queue<TaskNode*, std::vector<TaskNode*>, taskCompare> taskPQ;
-    
+
     TaskNode* traverse(int index);
     void deleteLinkedList();
 
@@ -21,6 +21,7 @@ public:
     void addTask(Task task);
     void completedTask(int index);
     void createLinkedList();
+    TaskNode* getHead();
     void setPriority(int index, int newPriority);
     void setTask(int index, std::string newTask);
     void printTasks();

@@ -33,6 +33,10 @@ TaskNode* TaskManager::traverse(int index) {
     return curr;
 }
 
+TaskNode* TaskManager::getHead() {
+    return head;
+}
+
 void TaskManager::deleteLinkedList(){
     if (head == nullptr){
         throw "Head is empty";
@@ -82,10 +86,10 @@ void TaskManager::printTasks() {
     int index = 0;
 
     while (curr != nullptr) {
-        std::cout << "Task " << index++ << ": " 
-                  << curr->task.getTask() 
-                  << " | Priority: " << curr->task.getPriority() 
-                  << " | Completed: " << (curr->task.getIsComplete() ? "Yes" : "No") 
+        std::cout << "Task " << index++ << ": "
+                  << curr->task.getTask()
+                  << " | Priority: " << curr->task.getPriority()
+                  << " | Completed: " << (curr->task.getIsComplete() ? "Yes" : "No")
                   << std::endl;
         curr = curr->next;
     }

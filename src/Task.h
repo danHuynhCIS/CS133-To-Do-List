@@ -1,5 +1,5 @@
 #ifndef TASK_H
-#define TASK_h
+#define TASK_H
 #include <iostream>
 
 class Task {
@@ -20,7 +20,7 @@ public:
     void setPriority(int newPriority);
     bool getIsComplete();
     void setIsComplete(bool complete);
-    
+
 };
 
 #endif

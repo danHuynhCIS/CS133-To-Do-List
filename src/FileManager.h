@@ -7,11 +7,12 @@
 
 class FileManager {
 private:
-    TaskManager taskManager;
-
+    TaskManager* tasks;
 public:
-    void loadFile(const std::string& inputFile, const std::string& outputFile);
-
+    FileManager(TaskManager* tasks);
+    void loadFile(const std::string& inputFile);
+    void saveFile(const std::string& outputFile);
+    void deleteFile(const std::string& filename);
 };
 
 #endif

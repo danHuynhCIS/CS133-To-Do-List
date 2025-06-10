@@ -10,9 +10,10 @@ void TaskManager::addTask(Task task) {
 }
 
 void TaskManager::createLinkedList() {
-    if (head != nullptr) {
+    /* if (head != nullptr) {
         throw "Priority Queue has no tasks!";
-    }
+    } */
+
     head = taskPQ.top();
     taskPQ.pop();
     TaskNode* curr = head;
@@ -37,14 +38,31 @@ TaskNode* TaskManager::getHead() {
     return head;
 }
 
+void TaskManager::deleteLinkedListHelper(TaskNode* curr) {
+    // return if list is empty
+    if (curr == nullptr) {
+        return;
+    }
+
+    addTask(curr->task);
+    // delete next node recursively
+    deleteLinkedListHelper(curr->next);
+
+    // delete current node
+    delete curr;
+}
+
 void TaskManager::deleteLinkedList(){
     if (head == nullptr){
         throw "Head is empty";
     }
 
-    Task temp;
+    deleteLinkedListHelper(head);
 
-    if (head->next == nullptr) {
+    //Task temp;
+    //head = new TaskNode(temp);
+
+    /* if (head->next == nullptr) {
         temp = head->task;
         addTask(temp);
         delete head;
@@ -59,7 +77,9 @@ void TaskManager::deleteLinkedList(){
         addTask(temp);
         delete tempNode;
         curr->next = nullptr;
-    }
+    } */
+
+
 }
 
 void TaskManager::completedTask(int index){

@@ -34,4 +34,4 @@
 - Function to allow user to load files from GUI
 
 ### Code Runner
--g++ -std=c++11 Task.cpp TaskManager.cpp TaskNode.cpp ToDoMain.cpp -o main.exe
+-g++ -std=c++11 Task.cpp TaskManager.cpp TaskNode.cpp ToDoMain.cpp FileManager.cpp -o main.exe

@@ -13,6 +13,7 @@ private:
 
     TaskNode* traverse(int index);
     void deleteLinkedList();
+    void deleteLinkedListHelper(TaskNode* curr);
 
 public:
     TaskManager();

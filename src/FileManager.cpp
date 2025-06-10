@@ -1,10 +1,12 @@
 #include "FileManager.h"
 #include "Task.h"
+#include <filesystem>
 #include <string>
 
 FileManager::FileManager(TaskManager* tasks) : tasks(tasks) {}
 
-void FileManager::loadFile(const std::string& inputFile) {
+void FileManager::loadFile(std::string inputFile) {
+
     std::ifstream file(inputFile);
     if (!file.is_open()) {
         std::cerr << "Error opening file: " << inputFile << std::endl;

@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <istream>
+#include <ostream>
 #include "TaskManager.h"
+#include "FileManager.h"
 #include <string>
 
 void intro() {
@@ -12,15 +14,6 @@ void intro() {
     std::cout << "You can add tasks, set their priorities, and mark them as complete." << std::endl;
 }
 
-void loadFromFile(std::string &inputFileName, std::string &outputFileName, std::string prompt) {
-    
-
-}
-
-void saveToFile(std::string fileName){
-
-}
-
 bool isValidInteger(const std::string& s) {
     if (s.empty()) return false;
 
@@ -29,6 +22,20 @@ bool isValidInteger(const std::string& s) {
     }
     
     return true;
+}
+
+void saveToFile(const std::string &outputFileName, const std::string &prompt, TaskManager &taskManager){
+    std::cout << "Enter the name of a .txt file: ";
+    std::string fileName;
+
+    getline(std::cin, fileName);
+    std::cout << std::endl;
+
+    FileManager fileManager(&taskManager);
+
+    fileManager.saveFile(fileName);
+
+    std::cout << "File saved!" << std::endl;
 }
 
 void otherChoices(TaskManager &taskManager, bool& exitProgram) {
@@ -43,7 +50,7 @@ void otherChoices(TaskManager &taskManager, bool& exitProgram) {
         std::cout << "2. Mark Task as Complete" << std::endl;
         std::cout << "3. Set Task Priority" << std::endl;
         std::cout << "4. Set Task Name" << std::endl;
-        std::cout << "5. Exit" << std::endl;
+        std::cout << "5. Save and Exit" << std::endl; // this should be separated into two options with a prompt to save upon exit
         std::cout << std::endl;
         std::cout << "Enter choice: ";
         getline(std::cin, choice);
@@ -81,6 +88,17 @@ void otherChoices(TaskManager &taskManager, bool& exitProgram) {
             getline(std::cin, newTask);
             taskManager.setTask(index, newTask);
         } else if (choice == "5") {
+            std::cout << "Enter the name of a .txt file: ";
+            std::string fileName;
+
+            getline(std::cin, fileName);
+            std::cout << std::endl;
+
+            FileManager fileManager(&taskManager);
+
+            fileManager.saveFile(fileName);
+
+            std::cout << "File saved!" << std::endl;
             std::cout << "Exiting the program. Goodbye!" << std::endl;
             exitProgram = true;
             return;
@@ -89,6 +107,24 @@ void otherChoices(TaskManager &taskManager, bool& exitProgram) {
         }
     }
 }
+
+void loadFromFile(const std::string &inputFileName, const std::string &prompt, TaskManager &taskManager, bool &exitProgram) {
+    std::cout << "Enter the name of a .txt file: ";
+    std::string fileName;
+
+    getline(std::cin, fileName);
+    std::cout << std::endl;
+
+    FileManager fileManager(&taskManager);
+
+    fileManager.loadFile(fileName);
+
+    std::cout << "File loaded!" << std::endl;
+
+    taskManager.createLinkedList();
+    otherChoices(taskManager, exitProgram);
+}
+
 void taskAdder(TaskManager &taskManager, bool& exitProgram) {
     std::string taskName;
     std::string priority;
@@ -133,7 +169,7 @@ void systemProcess(TaskManager& TaskManager, bool& exitProgram) {
     if (choice[0] == 'y' || choice[0] == 'Y') {
         std::cout << "Load file!" << std::endl;
         exitProgram = true;
-        //loadFromFile(inputFileName, outputFileName, "input");
+        loadFromFile(inputFileName, "Enter the name of a file: ", TaskManager, exitProgram);
     } 
     else if (choice[0] == 'n' || choice[0] == 'N') {
 
@@ -148,7 +184,7 @@ void systemProcess(TaskManager& TaskManager, bool& exitProgram) {
 int main() {
 
     intro();
-
+    
     bool exitProgram = false;
     TaskManager taskManager;
 

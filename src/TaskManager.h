@@ -12,8 +12,9 @@ private:
     std::priority_queue<TaskNode*, std::vector<TaskNode*>, taskCompare> taskPQ;
 
     TaskNode* traverse(int index);
-    void deleteLinkedList();
+    
     void deleteLinkedListHelper(TaskNode* curr);
+    void deleteLinkedList();
 
 public:
     TaskManager();
@@ -26,6 +27,8 @@ public:
     void setPriority(int index, int newPriority);
     void setTask(int index, std::string newTask);
     void printTasks();
+
+    
 };
 
 #endif

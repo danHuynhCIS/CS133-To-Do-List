@@ -52,6 +52,22 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xutility": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "array": "cpp",
+        "charconv": "cpp",
+        "codecvt": "cpp",
+        "cwctype": "cpp",
+        "unordered_map": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "string_view": "cpp",
+        "format": "cpp",
+        "iomanip": "cpp",
+        "numbers": "cpp",
+        "sstream": "cpp",
+        "text_encoding": "cpp",
+        "variant": "cpp"
     }
 }

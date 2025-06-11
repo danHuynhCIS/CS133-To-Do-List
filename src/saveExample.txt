@@ -1,7 +1,7 @@
 Feed cat 
 0
 Get groceries
-1 
+1
 Go to gym
 2
 Make dinner
@@ -10,5 +10,5 @@ Call Mom
 3
 Catch up on JJK
 4
-Study for tomorrow's CS exam 
+Study for tomorrow's Calc exam
 5

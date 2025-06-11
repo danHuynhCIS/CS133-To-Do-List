@@ -20,6 +20,8 @@ void FileManager::loadFile(std::string inputFile) {
         tasks->addTask(Task(line, std::stoi(priority)));
     }
 
+    std::cout << "File loaded!" << std::endl;
+
     file.close();
 }
 
@@ -36,6 +38,8 @@ void FileManager::saveFile(const std::string& outputFile) {
         file << curr->getPriority() << std::endl;
         curr = curr->next;
     }
+
+    std::cout << "File saved!" << std::endl;
 
     file.close();
 }

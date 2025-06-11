@@ -22,7 +22,7 @@ bool isValidInteger(const std::string& s) {
     for (int i = 0; i < s.length(); i++) {
         if (!isdigit(s[i])) return false;
     }
-    
+
     return true;
 }
 
@@ -53,7 +53,7 @@ void otherChoices(TaskManager &taskManager, bool& exitProgram) {
         std::cout << "4. Set Task Priority" << std::endl;
         std::cout << "5. Set Task Name" << std::endl;
         std::cout << "==============================" << std::endl;
-        std::cout << "6. Save As" << std::endl; 
+        std::cout << "6. Save As" << std::endl;
         std::cout << "7. Exit" << std::endl;
         std::cout << std::endl;
         std::cout << "Enter choice: ";
@@ -170,10 +170,11 @@ void taskAdder(TaskManager &taskManager) {
             taskManager.addTask(Task(taskName, std::stoi(priority)));
         }
     }
-    
+
+    taskManager.deleteLinkedList();
     taskManager.createLinkedList();
-    
-    
+
+
 }
 
 void systemProcess(TaskManager& TaskManager, bool& exitProgram) {
@@ -185,11 +186,11 @@ void systemProcess(TaskManager& TaskManager, bool& exitProgram) {
 
     if (choice[0] == 'y' || choice[0] == 'Y') {
         loadFromFile("Enter the name of a file: ", TaskManager);
-    } 
+    }
     else if (choice[0] == 'n' || choice[0] == 'N') {
-        taskAdder(TaskManager); 
-         
-    } 
+        taskAdder(TaskManager);
+
+    }
     else {
         std::cout << "Invalid choice. Please enter 'y' or 'n'." << std::endl;
         return;
@@ -199,17 +200,17 @@ void systemProcess(TaskManager& TaskManager, bool& exitProgram) {
 int main() {
 
     intro();
-    
+
     bool exitProgram = false;
     TaskManager taskManager;
-    
+
 
     systemProcess(taskManager, exitProgram);
 
     while (!exitProgram) {
-        
-        otherChoices(taskManager, exitProgram); 
+
+        otherChoices(taskManager, exitProgram);
     }
-    
+
     return 0;
 }

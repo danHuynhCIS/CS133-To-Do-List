@@ -9,11 +9,33 @@ void TaskManager::addTask(Task task) {
     taskPQ.push(new TaskNode(task));
 }
 
-void TaskManager::createLinkedList() {
-    if (head != nullptr) {
-        deleteLinkedList();
+void TaskManager::deleteLinkedListHelper(TaskNode* curr) {
+    // return if list is empty
+    if (curr == nullptr) {
+        return;
     }
 
+    addTask(curr->task);
+    // delete next node recursively
+    deleteLinkedListHelper(curr->next);
+
+    // delete current node
+    delete curr;
+}
+
+void TaskManager::deleteLinkedList(){
+    if (head == nullptr){
+        return;
+    }
+
+    deleteLinkedListHelper(head);
+
+}
+
+void TaskManager::createLinkedList() {
+    // if (head != nullptr) {
+    //     deleteLinkedList();
+    // }
     head = taskPQ.top();
     taskPQ.pop();
     TaskNode* curr = head;
@@ -38,29 +60,6 @@ TaskNode* TaskManager::getHead() {
     return head;
 }
 
-void TaskManager::deleteLinkedListHelper(TaskNode* curr) {
-    // return if list is empty
-    if (curr == nullptr) {
-        return;
-    }
-
-    addTask(curr->task);
-    // delete next node recursively
-    deleteLinkedListHelper(curr->next);
-
-    // delete current node
-    delete curr;
-}
-
-void TaskManager::deleteLinkedList(){
-    if (head == nullptr){
-        return;
-    }
-
-    deleteLinkedListHelper(head);
-
-}
-
 void TaskManager::completedTask(int index){
     TaskNode* completedTask = traverse(index);
     completedTask->task.setIsComplete(true);
@@ -68,8 +67,12 @@ void TaskManager::completedTask(int index){
 
 void TaskManager::setPriority(int index, int newPriority) {
     TaskNode* priorityNode = traverse(index);
+    std::cout << "traversing to index " << index << std::endl;
     priorityNode->task.setPriority(newPriority);
+    std::cout << "setting priority to " << newPriority << std::endl;
+    std::cout << "deleting linked list" << std::endl;
     deleteLinkedList();
+    std::cout << "creating linked list" << std::endl;
     createLinkedList();
 }
 

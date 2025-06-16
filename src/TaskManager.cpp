@@ -67,12 +67,11 @@ void TaskManager::completedTask(int index){
 
 void TaskManager::setPriority(int index, int newPriority) {
     TaskNode* priorityNode = traverse(index);
-    std::cout << "traversing to index " << index << std::endl;
+   
     priorityNode->task.setPriority(newPriority);
-    std::cout << "setting priority to " << newPriority << std::endl;
-    std::cout << "deleting linked list" << std::endl;
+    
     deleteLinkedList();
-    std::cout << "creating linked list" << std::endl;
+    
     createLinkedList();
 }
 

@@ -1,0 +1,9 @@
+To run the project, make sure to change the working directory in the terminal to the 'src' folder. 
+The program should already be built, but just in case, here's the command to compile all the necessary files.
+
+g++ -std=c++11 Task.cpp TaskManager.cpp TaskNode.cpp ToDoMain.cpp FileManager.cpp -o main.exe
+
+Then, you can run the program by typing the command ./main.exe
+
+Once the program is running, everything else is pretty self-explanatory. 
+You can test the file processing by loading a to-do list from the provided example.txt, perform any desired manipulations, then choose Save As to save the list as a .txt.

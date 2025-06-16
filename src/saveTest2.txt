@@ -1,0 +1,6 @@
+sleep
+1
+eat food
+2
+live laugh love
+5

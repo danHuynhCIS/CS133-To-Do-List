@@ -1,14 +1,16 @@
 Feed cat 
 0
-Catch up on JJK
-1
 Get groceries
 1
 Go to gym
 2
 Make dinner
 2
-Call dad
+Call Mom and Dad
 3
 Study for tomorrow's CS exam 
 5
+Sleep
+6
+Catch up on JJK
+8

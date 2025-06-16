@@ -16,6 +16,7 @@ struct TaskNode {
     void setPriority(int newPriority);
 };
 
+// used for sorting tasknodes in a priority queue
 class taskCompare {
 public:
     bool operator()(TaskNode* a, TaskNode* b);
